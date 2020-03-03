@@ -1,0 +1,45 @@
+header{
+    border-bottom: 1px solid $grey;
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: $container;
+        margin: auto;
+        
+        #navbar{
+            display: flex;
+            li{
+                a{
+                    padding: 1.5rem;
+                    display: block;
+                }
+                &:hover{
+                    background-color: $grey;
+                }
+            }
+            .dropdown {
+                position: relative;
+                ul{
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                }
+                &:hover ul{
+                    display: block;
+                }
+                
+            }
+        }
+        @media (min-width:769px){
+            #navbar-button{
+                display: none;
+            }
+        }
+
+    }
+}
+.container{
+    width: $container;
+    margin: auto;
+}

@@ -1,150 +1,185 @@
 <!DOCTYPE html>
-<style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/sass/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo"><a href="#"><img src="assets/img/logo.svg" width="170" height="54" alt="Test Logo"/></a></div>
+            <button id="navbar-button"><i></i><i></i><i></i></button>
+            <ul id="navbar">
+                <li class="dropdown">
+                    <a href="#">Dashboard</a>
+                    <ul>
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">Ipsum</a></li>
+                        <li><a href="#">Dolor</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Apps</a>
+                    <ul>
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">Ipsum</a></li>
+                        <li><a href="#">Dolor</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Pages</a>
+                    <ul>
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">Ipsum</a></li>
+                        <li><a href="#">Dolor</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Components</a></li>
+                <li><a href="#">Collections</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="header-row">
+                <div class="header-left">
+                    <div id="breadcrumb">
+                        <ul>
+                            <li><a href="#">Dashboard</a></li>
+                            <li>Website Analytics</li>
+                        </ul>
+                    </div>
+                    <h1 class="title">Welcome to Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-default">Save</button>
+                    <button class="btn btn-default">Export</button>
+                    <button class="btn btn-default">Share</button>
+                    <button class="btn btn-primary">Setting</button>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-left">
+                    <div class="chart-header">
+                        <div class="chart-header-left">
+                            <h2 class="chart-title">Website Audience Metrics</h2>
+                            <p class="chart-subtitle">Users to which audience belonged while on the current date range</p>
+                        </div>
+                        <div class="chart-header-right">
+                            <div class="btn-group">
+                                <button class="btn btn-default">Day</button>
+                                <button class="btn btn-default">Week</button>
+                                <button class="btn btn-default">Month</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chart-content">
+                        <svg id="audience-chart"></svg>
+                        <div class="chart-content-right">
+                                <div id="users-summary">
+                                    <div class="range">
+                                        <div class="range-title">
+                                            New Users
+                                            <small class="range-goal">65% goal reached</small>
+                                        </div>
+                                        <div class="range-data">
+                                            <div class="range-data-min">13,596</div>
+                                            <div class="range-data-max">20,000</div>
+                                        </div>
+                                        <div class="range-slide">
+                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                        </div>
+                                    </div>
+                                    <div class="range">
+                                        <div class="range-title">
+                                            New Users
+                                            <small class="range-goal">65% goal reached</small>
+                                        </div>
+                                        <div class="range-data">
+                                            <div class="range-data-min">13,596</div>
+                                            <div class="range-data-max">20,000</div>
+                                        </div>
+                                        <div class="range-slide">
+                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                        </div>
+                                    </div>
+                                    <div class="range">
+                                        <div class="range-title">
+                                            New Users
+                                            <small class="range-goal">65% goal reached</small>
+                                        </div>
+                                        <div class="range-data">
+                                            <div class="range-data-min">13,596</div>
+                                            <div class="range-data-max">20,000</div>
+                                        </div>
+                                        <div class="range-slide">
+                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                        </div>
+                                    </div>
+                                    <div class="range">
+                                        <div class="range-title">
+                                            New Users
+                                            <small class="range-goal">65% goal reached</small>
+                                        </div>
+                                        <div class="range-data">
+                                            <div class="range-data-min">13,596</div>
+                                            <div class="range-data-max">20,000</div>
+                                        </div>
+                                        <div class="range-slide">
+                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="chart-right">
+                    <div class="pie-chart-title">
 
-.axis .domain {
-  display: none;
-}
-
-</style>
-<svg id="barChart" width="600" height="500"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-
-var svg = d3.select("#barChart");
-var margin = {top: 20, right: 20, bottom: 30, left: 40};
-var width = +svg.attr("width") - margin.left - margin.right;
-var height = +svg.attr("height") - margin.top - margin.bottom;
-var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-var x0 = d3.scaleBand().paddingInner(0.1).rangeRound([0, width]);
-var x1 = d3.scaleBand().padding(0.05);
-var y = d3.scaleLinear().rangeRound([height, 0]);
-var z = d3.scaleOrdinal().range(["#fcbd88", "#f87eb9", "#7fbcff", "#7ee5e4"]);
-
-
-
-/* Data from CSV File
-d3.csv("data.csv", function(d, i, columns) {
-  //Covert Values to integers
-  //make number all except first column
-  for (var i = 1; i < columns.length; ++i){
-    
-    d[columns[i]] = parseInt(d[columns[i]]);
-
-  } 
-  return d;
-
-  }, function(error, data) {
-  //if not able to read the data
-  if (error) throw error;
-  console.log(data);
-  // get the the column name except first one as that would be label
-  var keys = data.columns.slice(1);
-  
-  // only show the desired number of data slice from 0-7,1,31 whether it's weekly/daily/monthly
-  
-  var updatedData = data.slice(0, 7);
-  var mainKeys = updatedData.map(function(d) { return d.Date; })
-
-
-  x0.domain(mainKeys)
-  x1.domain(keys).rangeRound([0, 70]);
-
-  y.domain([0, d3.max(updatedData, function(d) { 
-    return d3.max(keys, function(key) { 
-      return d[key]; 
-      }); 
-    })]).nice();
-
-  g.append("g")
-    .selectAll("g")
-    .data(updatedData)
-    .enter().append("g")
-      .attr("transform", function(d) { return "translate(" + x0(d.Date) + ",0)"; })
-    .selectAll("rect")
-    .data(function(d) { 
-      return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-    .enter().append("rect")
-      .attr("x", function(d) { return x1(d.key); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("width", x1.bandwidth())
-      .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", function(d) { return z(d.key); });
-
-  // g.append("g")
-  //     .attr("class", "axis")
-  //     .attr("transform", "translate(0," + height + ")")
-  //     .call(d3.axisBottom(x0));
-
-  // g.append("g")
-  //     .attr("class", "axis")
-  //     .call(d3.axisLeft(y).ticks(null, "s"))
-  //   .append("text")
-  //     .attr("x", 2)
-  //     .attr("y", y(y.ticks().pop()) + 0.5)
-  //     .attr("dy", "0.32em")
-  //     .attr("fill", "#000")
-  //     .attr("font-weight", "bold")
-  //     .attr("text-anchor", "start")
-  //     .text("Population");
-
-  // var legend = g.append("g")
-  //     .attr("font-family", "sans-serif")
-  //     .attr("font-size", 10)
-  //     .attr("text-anchor", "end")
-  //   .selectAll("g")
-  //   .data(keys.slice().reverse())
-  //   .enter().append("g")
-  //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  // legend.append("rect")
-  //     .attr("x", width - 19)
-  //     .attr("width", 19)
-  //     .attr("height", 19)
-  //     .attr("fill", z);
-
-  // legend.append("text")
-  //     .attr("x", width - 24)
-  //     .attr("y", 9.5)
-  //     .attr("dy", "0.32em")
-  //     .text(function(d) { return d; });
-});
-
-*/
-
-
-d3.json("usersData.json", function(response) {
-    data = response.data.slice(0,7); 
-    x0.domain(data.map(function(d) { return d.Date; }))    
-    x1.rangeRound([0, x0.bandwidth()]);
-    x1.domain(Object.keys(data[0]))
-    y.domain([0, 4499890]).nice();
-    
-    g.selectAll("g")
-    .data(data)
-    .enter()
-    .append("g")
-      .attr("transform", function(d, i) { return "translate(" + x0(d.Date) + ",0)"; })
-      .selectAll("rect")
-      .data(function(d) {    
-        delete d.Date;
-        
-        return Object.entries(d);
-      })
-      .enter()
-      .append("rect") 
-      .attr("y", height)
-      .attr("height",0)
-      .attr("x", function(d,i) { console.log(x1(d[0])); return x1(d[0]); })       
-      
-      .attr("fill", function(d,i) { return z(i); })      
-      .attr("width", x1.bandwidth())
-      
-      .transition()
-      .attr("height", function(d) { return height-y(d[1]); })
-      .delay(function (d) {return Math.random()*1000;})
-      .duration(1000) 
-      .attr("y", function(d) { return y(d[1]); })
-
-      
-});
-</script>
+                    </div>
+                    <svg id="pie-chart"></svg>
+                    <div id="pie-chart-data">
+                        <div class="pie-data">
+                            <div class="pie-data-title">
+                                Organic Search
+                            </div>
+                            <div class="pie-data-amount" data-color="#ff0000">
+                                1,320 <small>25%</small>
+                            </div>
+                        </div>
+                        <div class="pie-data">
+                            <div class="pie-data-title">
+                                Organic Search
+                            </div>
+                            <div class="pie-data-amount" data-color="#ff0000">
+                                1,320 <small>25%</small>
+                            </div>
+                        </div>
+                        <div class="pie-data">
+                            <div class="pie-data-title">
+                                Organic Search
+                            </div>
+                            <div class="pie-data-amount" data-color="#ff0000">
+                                1,320 <small>25%</small>
+                            </div>
+                        </div>
+                        <div class="pie-data">
+                            <div class="pie-data-title">
+                                Organic Search
+                            </div>
+                            <div class="pie-data-amount" data-color="#ff0000">
+                                1,320 <small>25%</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
