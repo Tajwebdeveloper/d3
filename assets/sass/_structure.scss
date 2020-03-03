@@ -5,10 +5,11 @@ header{
         align-items: center;
         justify-content: space-between;
         max-width: $container;
+        padding: 0 1rem;
         margin: auto;
         
         #navbar{
-            display: flex;
+            display: none;
             li{
                 a{
                     padding: 1.5rem;
@@ -30,16 +31,218 @@ header{
                 }
                 
             }
+
         }
         @media (min-width:769px){
-            #navbar-button{
-                display: none;
-            }
-        }
+          #navbar{
+            display: flex;
+          }
+          #navbar-button{
+              display: none;
+          }
+      }
+        button#navbar-button {
+          padding: 0;
+          background: none;
+          border: none;
+      }
+      
+      button#navbar-button i {
+          width: 20px;
+          height: 4px;
+          background: #2828f6;
+          display: block;
+          margin: 3px 0;
+          border-radius: 2px;
+          border: none;
+      }
 
     }
 }
+main{
+  margin-bottom: 5rem;
+}
 .container{
-    width: $container;
+    max-width: $container;
+    padding: 0 1rem;
     margin: auto;
+}
+
+.header-row {
+  @media(min-width: 769px){
+    display: flex;
+  }
+  
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.chart-row {
+  @media(min-width: 769px){
+    display: flex;
+  }
+  justify-content: space-between;
+  .chart-right {
+    border: 1px solid $grey;
+    border-radius: $radius;
+  }
+  g.tick line, path.domain {stroke: #f0efef;}
+
+  g.tick text {
+      fill: #999;
+  }
+
+  .chart-left {
+    width: 100%;
+    border: 1px solid $grey;
+    border-radius: $radius;
+    margin-right: 1rem;
+    padding: 1.5rem;
+    .chart-header {
+      @media(min-width: 769px){
+        display: flex;
+      }
+      justify-content: space-between;
+      align-items: center;
+      .chart-title{
+        margin:0;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+      }
+      .chart-subtitle{
+        margin: 0;
+        color: lighten($textColor, 25);
+        font-size: 0.875rem;
+      }
+    }
+    #chart-content {
+      @media(min-width: 769px){
+        display: flex;
+      }
+      justify-content: space-between;
+      margin-top: 1rem;
+  }
+  #users-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 1rem 0 0.75rem;
+}
+  .range-title {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.range-title small {
+    text-transform: initial;
+}
+
+.chart-content-right {
+    min-width: 200px;
+}
+
+.range-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.range-slide {
+    height: 0.25rem;
+    border-radius: 10px;
+    background: #eee;
+    .range-completed{
+      height: 0.25rem;
+    }
+}
+
+
+.range {
+    margin-top: 2rem;
+}
+  }
+  .chart-right{
+    flex: 0 0 320px;
+    .pie-chart-title {
+      padding: 1.5rem;
+      font-weight: 400;
+      border-bottom: 1px solid $grey;
+    }
+    #pie-chart-data {
+      border-top: 1px solid $grey;
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      .pie-data {
+        width: 50%;
+        padding: 0.75rem  1.5rem;
+        .pie-data-dot {
+          display: inline-block;
+          width: 0.875rem;
+          height: 0.875rem;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+          position: relative;
+          top: 1px;
+      }
+    }
+      .pie-data-title {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #999;
+    }
+    
+    .pie-data-amount {
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: flex;
+        align-items: baseline;
+    }
+    
+    .pie-data-amount small {
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #999;
+        margin-left: 0.25rem;
+    }
+    }
+    svg#pie-chart {
+      margin: auto;
+      display: block;
+      width: 200px;
+  }
+    
+  }
+}
+
+
+
+@media(max-width:768px){
+  .header-right {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.header-right .btn {
+    width: 24%;
+    padding: 0.5rem;
+}
+
+.chart-header-right {
+    margin-top: 1rem;
+}
+
+.chart-left {
+    margin-bottom: 1rem;
+}
 }

@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map Dashboard</title>
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/sass/main.css">
-</head>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+  
+	    <script src="assets/js/object-polyfill.js"></script>
+    
+  
+  </head>
 <body>
     <header>
         <nav>
@@ -55,10 +60,10 @@
                     <h1 class="title">Welcome to Dashboard</h1>
                 </div>
                 <div class="header-right">
-                    <button class="btn btn-default">Save</button>
-                    <button class="btn btn-default">Export</button>
-                    <button class="btn btn-default">Share</button>
-                    <button class="btn btn-primary">Setting</button>
+                    <button class="btn btn-default"><i class="far fa-save"></i> Save</button>
+                    <button class="btn btn-default"><i class="fas fa-upload"></i> Export</button>
+                    <button class="btn btn-default"><i class="fas fa-share-alt"></i> Share</button>
+                    <button class="btn btn-primary"><i class="fas fa-sliders-h"></i> Setting</button>
                 </div>
             </div>
             <div class="chart-row">
@@ -70,14 +75,16 @@
                         </div>
                         <div class="chart-header-right">
                             <div class="btn-group">
-                                <button class="btn btn-default">Day</button>
-                                <button class="btn btn-default">Week</button>
-                                <button class="btn btn-default">Month</button>
+                                <button class="btn btn-default" onclick="updateData(1, this)">Day</button>
+                                <button class="btn btn-default active" onclick="updateData(7, this)">Week</button>
+                                <button class="btn btn-default" onclick="updateData(31,this)">Month</button>
                             </div>
                         </div>
                     </div>
                     <div id="chart-content">
-                        <svg id="audience-chart"></svg>
+                        <div>
+                          <svg id="audience-chart" width="600" height="380" viewBox="0 0 600 380"></svg>
+                        </div>
                         <div class="chart-content-right">
                                 <div id="users-summary">
                                     <div class="range">
@@ -90,46 +97,46 @@
                                             <div class="range-data-max">20,000</div>
                                         </div>
                                         <div class="range-slide">
-                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                            <div class="range-completed" data-completed="65" data-color="#fcbd88"></div>
                                         </div>
                                     </div>
                                     <div class="range">
                                         <div class="range-title">
-                                            New Users
-                                            <small class="range-goal">65% goal reached</small>
+                                            Page Views
+                                            <small class="range-goal">45% goal reached</small>
                                         </div>
                                         <div class="range-data">
                                             <div class="range-data-min">13,596</div>
                                             <div class="range-data-max">20,000</div>
                                         </div>
                                         <div class="range-slide">
-                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                            <div class="range-completed" data-completed="45" data-color="#f87eb9"></div>
                                         </div>
                                     </div>
                                     <div class="range">
                                         <div class="range-title">
-                                            New Users
-                                            <small class="range-goal">65% goal reached</small>
+                                            Page Sessions
+                                            <small class="range-goal">20% goal reached</small>
                                         </div>
                                         <div class="range-data">
                                             <div class="range-data-min">13,596</div>
                                             <div class="range-data-max">20,000</div>
                                         </div>
                                         <div class="range-slide">
-                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                            <div class="range-completed" data-completed="20" data-color="#7fbcff"></div>
                                         </div>
                                     </div>
                                     <div class="range">
                                         <div class="range-title">
-                                            New Users
-                                            <small class="range-goal">65% goal reached</small>
+                                            Bounce Rate
+                                            <small class="range-goal">85% goal reached</small>
                                         </div>
                                         <div class="range-data">
                                             <div class="range-data-min">13,596</div>
                                             <div class="range-data-max">20,000</div>
                                         </div>
                                         <div class="range-slide">
-                                            <div class="range-completed" data-completed="65" data-color="#ff0000"></div>
+                                            <div class="range-completed" data-completed="85" data-color="#7ee5e4"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -140,40 +147,40 @@
                 </div>
                 <div class="chart-right">
                     <div class="pie-chart-title">
-
+                        Sessions By Channel
                     </div>
-                    <svg id="pie-chart"></svg>
+                    <svg id="pie-chart" width="260" height="260" viewBox="0 0 260 260"></svg>
                     <div id="pie-chart-data">
                         <div class="pie-data">
                             <div class="pie-data-title">
                                 Organic Search
                             </div>
-                            <div class="pie-data-amount" data-color="#ff0000">
-                                1,320 <small>25%</small>
+                            <div class="pie-data-amount">
+                                <span class="pie-data-dot" data-color="#fcbd88"></span>1,320 <small>25%</small>
                             </div>
                         </div>
                         <div class="pie-data">
                             <div class="pie-data-title">
-                                Organic Search
+                                Email
                             </div>
-                            <div class="pie-data-amount" data-color="#ff0000">
-                                1,320 <small>25%</small>
-                            </div>
-                        </div>
-                        <div class="pie-data">
-                            <div class="pie-data-title">
-                                Organic Search
-                            </div>
-                            <div class="pie-data-amount" data-color="#ff0000">
-                                1,320 <small>25%</small>
+                            <div class="pie-data-amount">
+                              <span class="pie-data-dot" data-color="#f87eb9"></span> 1,320 <small>25%</small>
                             </div>
                         </div>
                         <div class="pie-data">
                             <div class="pie-data-title">
-                                Organic Search
+                                Referral
                             </div>
-                            <div class="pie-data-amount" data-color="#ff0000">
-                                1,320 <small>25%</small>
+                            <div class="pie-data-amount">
+                              <span class="pie-data-dot" data-color="#7fbcff"></span> 1,320 <small>25%</small>
+                            </div>
+                        </div>
+                        <div class="pie-data">
+                            <div class="pie-data-title">
+                                Social Media
+                            </div>
+                            <div class="pie-data-amount">
+                              <span class="pie-data-dot" data-color="#7ee5e4"></span> 1,320 <small>25%</small>
                             </div>
                         </div>
                     </div>
@@ -181,5 +188,10 @@
             </div>
         </div>
     </main>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="assets/js/barchart.js"></script>
+    <script src="assets/js/piechart.js"></script>
+    <script src="assets/js/main.js"></script>
+    
 </body>
 </html>

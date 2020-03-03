@@ -1,7 +1,13 @@
+*{
+  box-sizing: border-box;
+}
 body{
     margin:0;
     font-family: $font;
-    font-weight: 300;
+}
+img,svg{
+  max-width: 100%;
+  height: auto;
 }
 ul,ol{
     margin:0;
