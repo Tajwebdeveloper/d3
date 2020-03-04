@@ -21,3 +21,12 @@ document.querySelectorAll('.range-completed').forEach(function(e){
 document.querySelectorAll('.pie-data-dot').forEach(function(e){
    e.style.backgroundColor = e.dataset.color;
 })
+
+document.getElementById("navbar-button").addEventListener("click", function(){
+  document.getElementById("navbar").classList.toggle("show")
+})
+document.querySelectorAll(".open-dd").forEach(function(e){
+  e.addEventListener("click", function(){
+   e.nextElementSibling.classList.toggle("show")
+  })
+})
